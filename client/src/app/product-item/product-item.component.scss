@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  width: 250px;
+  margin: 0 25px 25px 0;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
