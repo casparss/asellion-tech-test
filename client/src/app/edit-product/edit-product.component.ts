@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
   styleUrls: ['./edit-product.component.scss']
 })
-export class EditProductComponent implements OnInit {
+export class EditProductComponent {
+  constructor(@Inject(MAT_DIALOG_DATA) public id?: string) {}
 
-  constructor() { }
+  editProductForm: FormGroup = new FormGroup({
+    name: new FormControl(''),
+    currentPrice: new FormControl('')
+  });
 
-  ngOnInit(): void {
+  save(): void {
+    console.log(this.editProductForm.value);
   }
-
 }

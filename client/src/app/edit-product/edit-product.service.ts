@@ -9,10 +9,11 @@ export class EditProductService {
   constructor(public dialog: MatDialog) {}
 
   open(id?: string): void {
-    const dialogRef = this.dialog.open(EditProductComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.dialog
+      .open(EditProductComponent, { data: id })
+      .afterClosed()
+      .subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
   }
 }
