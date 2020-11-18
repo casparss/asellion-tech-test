@@ -8,9 +8,7 @@ import { loadAll } from './product-store.actions';
   providedIn: 'root'
 })
 export class ProductStoreService {
-  constructor(private store: Store<ProductStoreState>) {
-    this.fetchProducts();
-  }
+  constructor(private store: Store<ProductStoreState>) {}
 
   fetchProducts(): void {
     this.store.dispatch(loadAll({ products: productsStub }));
