@@ -28,12 +28,15 @@ export class EditProductComponent implements OnInit {
     this.store
       .select(selectProductById(this.id))
       .subscribe(product => this.editProductForm.patchValue(product));
+
+    this.dialog
+      .afterClosed()
+      .subscribe((() => this.editProductForm.reset()));
   }
 
   save(): void {
     const product = this.product;
     this.store.dispatch(this.id ? updateOne({ product }) : createOne({ product }));
-    this.editProductForm.reset();
     this.dialog.close();
   }
 

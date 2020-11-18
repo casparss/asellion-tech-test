@@ -11,3 +11,12 @@ export class ProductListComponent {}
   template: ''
 })
 export class NewProductButtonComponent {}
+
+export const dialog = {
+  open(): void {},
+  afterClosed(): any {
+    return {
+      subscribe(): void {}
+    };
+  }
+}
