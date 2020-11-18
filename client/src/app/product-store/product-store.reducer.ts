@@ -14,7 +14,7 @@ export const reducer = createReducer(
   on(ProductStoreActions.loadAll, (state, { products }) => ( adapter.setAll(products, state) )),
   on(ProductStoreActions.createOne, (state, { product }) => ( adapter.addOne(product, state) )),
   on(ProductStoreActions.updateOne, (state, { product }) => ( adapter.updateOne(product, state) )),
-  on(ProductStoreActions.removeOne, (state, { product: { id } }) => ( adapter.removeOne(id, state) )),
+  on(ProductStoreActions.removeOne, (state, { product: { id } }) => ( adapter.removeOne(id, state) ))
 );
 
 export const selectors = adapter.getSelectors();

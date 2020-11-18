@@ -8,7 +8,7 @@ import productsStub from './stub';
 
 @Component({
   selector: 'app-product-list',
-  template: `<app-product-item *ngFor="let product of (products$ | async)" [product]=product></app-product-item>`,
+  template: `<app-product-item *ngFor="let product of products$ | async" [product]=product></app-product-item>`,
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent {
