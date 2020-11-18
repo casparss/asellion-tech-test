@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectAllProducts } from '../product-store/product-store.selectors';
 import { Product, ProductStoreState } from 'src/types/product.type';
-import { loadAll } from '../product-store/product-store.actions';
-import productsStub from './stub';
+import { selectAllProducts } from '../product-store/product-store.selectors';
 
 @Component({
   selector: 'app-product-list',
@@ -16,6 +14,5 @@ export class ProductListComponent {
 
   constructor(store: Store<ProductStoreState>) {
     this.products$ = store.select(selectAllProducts);
-    store.dispatch(loadAll({ products: productsStub }));
   }
 }
