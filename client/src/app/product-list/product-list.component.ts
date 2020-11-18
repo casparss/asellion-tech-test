@@ -1,52 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/types/product.type';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectAllProducts } from '../product-store/product-store.selectors';
+import { Product, ProductStoreState } from 'src/types/product.type';
+import { loadAll } from '../product-store/product-store.actions';
+import productsStub from './stub';
 
 @Component({
   selector: 'app-product-list',
-  template: `<app-product-item *ngFor="let product of products" [product]=product></app-product-item>`,
+  template: `<app-product-item *ngFor="let product of (products$ | async)" [product]=product></app-product-item>`,
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent {
-  products: Product[] = [{
-      id: '1',
-      name: 'Bob',
-      currentPrice: 100,
-      lastUpdateDate: new Date(),
-      imageUrl: 'http://placekitten.com/200/200?image=1'
-    },
-    {
-      id: '2',
-      name: 'Sam',
-      currentPrice: 200,
-      lastUpdateDate: new Date(),
-      imageUrl: 'http://placekitten.com/200/200?image=2'
-    },
-    {
-      id: '3',
-      name: 'Jane',
-      currentPrice: 400,
-      lastUpdateDate: new Date(),
-      imageUrl: 'http://placekitten.com/200/200?image=3'
-    },
-    {
-      id: '4',
-      name: 'Alexia',
-      currentPrice: 100,
-      lastUpdateDate: new Date(),
-      imageUrl: 'http://placekitten.com/200/200?image=4'
-    },
-    {
-      id: '5',
-      name: 'Alice',
-      currentPrice: 1000,
-      lastUpdateDate: new Date(),
-      imageUrl: 'http://placekitten.com/200/200?image=5'
-    },
-    {
-      id: '6',
-      name: 'Bob',
-      currentPrice: 50,
-      lastUpdateDate: new Date(),
-      imageUrl: 'http://placekitten.com/200/200?image=6'
-  }];
+  products$: Observable<Product[]>;
+
+  constructor(store: Store<ProductStoreState>) {
+    this.products$ = store.select(selectAllProducts);
+    store.dispatch(loadAll({ products: productsStub }));
+  }
 }

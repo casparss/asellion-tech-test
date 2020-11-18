@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-product',
@@ -8,7 +8,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./edit-product.component.scss']
 })
 export class EditProductComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public id?: string) {}
+  constructor(
+    public dialog: MatDialogRef<EditProductComponent>,
+    @Inject(MAT_DIALOG_DATA) public id?: string
+  ) {}
 
   editProductForm: FormGroup = new FormGroup({
     name: new FormControl(''),
@@ -17,5 +20,6 @@ export class EditProductComponent {
 
   save(): void {
     console.log(this.editProductForm.value);
+    this.dialog.close();
   }
 }

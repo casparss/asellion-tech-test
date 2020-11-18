@@ -9,11 +9,6 @@ export class EditProductService {
   constructor(public dialog: MatDialog) {}
 
   open(id?: string): void {
-    this.dialog
-      .open(EditProductComponent, { data: id })
-      .afterClosed()
-      .subscribe(result => {
-        console.log(`Dialog result: ${result}`);
-      });
+    this.dialog.open(EditProductComponent, { data: id });
   }
 }

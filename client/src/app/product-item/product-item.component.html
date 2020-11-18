@@ -3,13 +3,18 @@
     <div mat-card-avatar>
       <img class="avatar" [src]="product.imageUrl" alt="Photo of a Shiba Inu">
     </div>
+
     <mat-card-title>{{product.name}}</mat-card-title>
+
     <mat-card-subtitle>{{product.name}}</mat-card-subtitle>
   </mat-card-header>
+
   <img mat-card-image [src]="product.imageUrl" alt="Photo of a Shiba Inu">
+
   <mat-card-content>
     <mat-list>
       <h3 matSubheader>Details</h3>
+
       <mat-list-item>
          <h4 matLine>Last updated</h4>
          <p matLine>{{product.lastUpdateDate | date: 'medium' }}</p>
