@@ -1,25 +1,42 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { Product, ProductStoreState } from '../../types/product.type';
+import { updateOne, createOne } from '../product-store/product-store.actions';
+import { selectProductById } from '../product-store/product-store.selectors';
 
 @Component({
   selector: 'app-edit-product',
   templateUrl: './edit-product.component.html',
   styleUrls: ['./edit-product.component.scss']
 })
-export class EditProductComponent {
-  constructor(
-    public dialog: MatDialogRef<EditProductComponent>,
-    @Inject(MAT_DIALOG_DATA) public id?: string
-  ) {}
-
+export class EditProductComponent implements OnInit {
   editProductForm: FormGroup = new FormGroup({
     name: new FormControl(''),
     currentPrice: new FormControl('')
   });
 
+  constructor(
+    public store: Store<ProductStoreState>,
+    public dialog: MatDialogRef<EditProductComponent>,
+    @Inject(MAT_DIALOG_DATA) public id?: string
+  ) {}
+
+  ngOnInit(): void {
+    this.store
+      .select(selectProductById(this.id))
+      .subscribe(product => this.editProductForm.patchValue(product));
+  }
+
   save(): void {
-    console.log(this.editProductForm.value);
+    const product = this.product;
+    this.store.dispatch(this.id ? updateOne({ product }) : createOne({ product }));
     this.dialog.close();
+  }
+
+  get product(): Product {
+    const product = this.editProductForm.value;
+    return { id: this.id, ...product };
   }
 }

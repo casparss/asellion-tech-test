@@ -21,7 +21,7 @@ export const selectAllProducts = createSelector(
   productStoreSelectors.selectAll
 );
 
-// export const selectCurrentUserId = createSelector(
-//   selectProductStoreState,
-//   (state, a) =>
-// );
+export const selectProductById = (id: string) => createSelector(
+  selectProductStoreState,
+  ({ entities }) => entities[id]
+);

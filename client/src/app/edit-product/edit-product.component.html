@@ -2,13 +2,13 @@
 
 <form [formGroup]="editProductForm" (ngSubmit)="save()">
   <mat-form-field>
-    <mat-label>Address</mat-label>
-    <textarea matInput placeholder="Ex. 100 Main St" formControlName="name">1600 Amphitheatre Pkwy</textarea>
+    <mat-label>Name</mat-label>
+    <textarea matInput placeholder="Name" formControlName="name"></textarea>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Address 2</mat-label>
-    <textarea matInput formControlName="currentPrice"></textarea>
+    <mat-label>Current price</mat-label>
+    <textarea matInput placeholder="Current price" formControlName="currentPrice"></textarea>
   </mat-form-field>
 
   <button [disabled]="editProductForm.pristine" type="submit" mat-flat-button color="primary">Primary</button>
