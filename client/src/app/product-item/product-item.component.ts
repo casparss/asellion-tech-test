@@ -15,4 +15,8 @@ export class ProductItemComponent {
   openEditProductDialog(): void {
     this.editProductService.open(this.product.id);
   }
+
+  public get imageUrl(): string {
+    return `https://placedog.net/200/200?id=${this.product.id}`;
+  }
 }

@@ -14,6 +14,7 @@ import { selectProductById } from '../product-store/product-store.selectors';
 export class EditProductComponent implements OnInit {
   editProductForm: FormGroup = new FormGroup({
     name: new FormControl(''),
+    category: new FormControl(''),
     currentPrice: new FormControl('')
   });
 

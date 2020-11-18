@@ -11,10 +11,23 @@ export const initialState: ProductStoreState = adapter.getInitialState({
 
 export const reducer = createReducer(
   initialState,
-  on(ProductStoreActions.loadAll, (state, { products }) => ( adapter.setAll(products, state) )),
-  on(ProductStoreActions.createOne, (state, { product }) => ( adapter.addOne(product, state) )),
-  on(ProductStoreActions.updateOne, (state, { product: { id, ...changes } }) => ( adapter.updateOne({ id, changes }, state) )),
-  on(ProductStoreActions.removeOne, (state, { product: { id } }) => ( adapter.removeOne(id, state) ))
+  on(ProductStoreActions.loadAll, (state, { products }) => (
+    adapter.setAll(products, state)
+  )),
+  on(ProductStoreActions.createOne, (state, { product }) => (
+    adapter.addOne(setLastUpdatedDate(product) as Product, state)
+  )),
+  on(ProductStoreActions.updateOne, (state, { product: { id, ...rest } }) => (
+    adapter.updateOne({ id, changes: setLastUpdatedDate(rest) }, state)
+  )),
+  on(ProductStoreActions.removeOne, (state, { product: { id } }) => (
+    adapter.removeOne(id, state)
+  ))
 );
+
+const setLastUpdatedDate = (item: Partial<unknown>): Partial<Product> => ({
+  ...item,
+  lastUpdateDate: new Date()
+});
 
 export const selectors = adapter.getSelectors();

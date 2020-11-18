@@ -7,9 +7,16 @@
   </mat-form-field>
 
   <mat-form-field>
+    <mat-label>Category</mat-label>
+    <textarea matInput placeholder="Category" formControlName="category"></textarea>
+  </mat-form-field>
+
+  <mat-form-field>
     <mat-label>Current price</mat-label>
     <textarea matInput placeholder="Current price" formControlName="currentPrice"></textarea>
   </mat-form-field>
 
-  <button [disabled]="editProductForm.pristine" type="submit" mat-flat-button color="primary">Primary</button>
+  <button [disabled]="editProductForm.pristine" type="submit" mat-flat-button color="primary">
+    {{ this.id ? 'Update' : 'Create' }}
+  </button>
 </form>
