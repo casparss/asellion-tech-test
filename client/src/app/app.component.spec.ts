@@ -1,11 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { ProductListComponent, NewProductButtonComponent } from '../test/mocks/components';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        NewProductButtonComponent,
+        ProductListComponent
       ],
     }).compileComponents();
   });
@@ -19,13 +22,6 @@ describe('AppComponent', () => {
   it(`should have as title 'client'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('client');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('client app is running!');
+    expect(app.title).toEqual('Dogster');
   });
 });

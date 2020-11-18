@@ -1,9 +1,11 @@
-import { Component, Input } from '@angular/core';
-import { Product } from 'src/types/product.type';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { PLACEHOLDER_IMG_URL } from '../../constants/product';
+import { Product } from '../../types/product.type';
 import { EditProductService } from '../edit-product/edit-product.service';
 
 @Component({
   selector: 'app-product-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.scss']
 })
@@ -17,6 +19,6 @@ export class ProductItemComponent {
   }
 
   public get imageUrl(): string {
-    return `https://placedog.net/200/200?id=${this.product.id}`;
+    return `${PLACEHOLDER_IMG_URL}?id=${this.product.id}`;
   }
 }

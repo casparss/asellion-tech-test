@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { EditProductService } from '../edit-product/edit-product.service';
 import { NewProductButtonComponent } from './new-product-button.component';
 
 describe('NewProductButtonComponent', () => {
@@ -8,6 +8,9 @@ describe('NewProductButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      providers: [
+        { provide: EditProductService, useValue: { open(): void {} } },
+      ],
       declarations: [ NewProductButtonComponent ]
     })
     .compileComponents();

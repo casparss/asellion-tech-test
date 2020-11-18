@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Store } from '@ngrx/store';
+import { Store as StoreMock } from '../../test/mocks/services';
 
 import { ProductListComponent } from './product-list.component';
 
@@ -8,7 +10,8 @@ describe('ProductListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProductListComponent ]
+      declarations: [ ProductListComponent ],
+      providers: [{ provide: Store, useValue: new StoreMock() }]
     })
     .compileComponents();
   });

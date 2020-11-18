@@ -33,11 +33,13 @@ export class EditProductComponent implements OnInit {
   save(): void {
     const product = this.product;
     this.store.dispatch(this.id ? updateOne({ product }) : createOne({ product }));
+    this.editProductForm.reset();
     this.dialog.close();
   }
 
   get product(): Product {
+    const { id } = this;
     const product = this.editProductForm.value;
-    return { id: this.id, ...product };
+    return { id, ...product };
   }
 }
