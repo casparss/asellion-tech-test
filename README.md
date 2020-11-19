@@ -1,3 +1,21 @@
+# Asellion tech test
+
+Hello guys, here's the finished tech test. It was actually quite a lot of fun diving back into Angular and figuring it out especially using NGRX which I've not checked out before. The occasional head-bang on the desk trying to figure out implementing side effects and mocking tests, but otherwise reasonably straight froward picking it back up again. I haven't spent all week on this as I've still been picking up bits from ThinkSprint, otherwise I would've submitted it yesterday.
+
+### Commands
+
+To run the project, usual start command
+`npm start`
+
+### Thoughts
+
+-   I added place holder images to the items which are just fetched by the item ID and are essentially auto-generated. I also added extra fields to the data model which are obviously outside the spec.
+-   I was going to build components with StoryBook but figured that it would be a little overkill given that there was only a couple of components with hardly any states
+-   If i was to spend longer on the test I'd improve the tests! They all should be in the green, but are only really testing whether the component loads and not really functional. I would also cover the store with tests generally as these are quite cheap tests to write.
+-   I would also improve the UX a little, particularly the 'remove product' button I would always have this behaviour behind a 'confirm' dialog.
+-   Didn't go big on the CSS, it's all very simple layout tweaking
+-   Was even thinking about going the extra mile and writing a NestJS simple back-end service but i thought bet of it
+
 # Asellion Front-end assignment (Senior-Level)
 
 ## Introduction
