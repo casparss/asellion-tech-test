@@ -1,7 +1,7 @@
 <mat-card (click)="openEditProductDialog()">
   <mat-card-header>
     <div mat-card-avatar>
-      <img class="avatar" [src]="imageUrl" alt="Photo of a Shiba Inu">
+      <img class="avatar" [src]="imageUrl" alt="Product avatar">
     </div>
 
     <mat-card-title>{{product.name}}</mat-card-title>
@@ -9,7 +9,7 @@
     <mat-card-subtitle>{{product.category}}</mat-card-subtitle>
   </mat-card-header>
 
-  <img mat-card-image [src]="imageUrl" alt="Photo of a Shiba Inu">
+  <img mat-card-image [src]="imageUrl" alt="Product image">
 
   <mat-card-content>
     <mat-list>
