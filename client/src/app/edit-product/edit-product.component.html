@@ -21,4 +21,10 @@
   <button [disabled]="editProductForm.pristine" type="submit" mat-flat-button color="primary">
     {{ this.id ? 'Update' : 'Create' }}
   </button>
+
+  <button *ngIf="this.id" (click)="removeProduct()" type="button" mat-flat-button color="warn">
+    Remove product
+  </button>
 </form>
+
+

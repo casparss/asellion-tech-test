@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Product, ProductStoreState } from '../../types/product.type';
-import { updateOne, createOne } from '../product-store/product-store.actions';
+import { updateOne, createOne, removeOne } from '../product-store/product-store.actions';
 import { filter } from 'rxjs/operators';
 import { selectProductById } from '../product-store/product-store.selectors';
 
@@ -28,7 +28,7 @@ export class EditProductComponent implements OnInit {
   ngOnInit(): void {
     this.store
       .select(selectProductById(this.id))
-      .pipe(filter(() => Boolean(this.id)))
+      .pipe(filter(product => product && Boolean(this.id)))
       .subscribe(product => this.editProductForm.patchValue(product));
 
     this.dialog
@@ -39,6 +39,12 @@ export class EditProductComponent implements OnInit {
   save(): void {
     const product = this.product;
     this.store.dispatch(this.id ? updateOne({ product }) : createOne({ product }));
+    this.dialog.close();
+  }
+
+  public removeProduct(): void {
+    const product = this.product;
+    this.store.dispatch(removeOne({ product }));
     this.dialog.close();
   }
 

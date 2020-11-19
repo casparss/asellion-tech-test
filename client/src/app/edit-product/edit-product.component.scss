@@ -2,5 +2,8 @@
   & > form {
     display: flex;
     flex-direction: column;
+    > button:last-child {
+      margin-top: 15px;
+    }
   }
 }
