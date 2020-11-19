@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Product, ProductStoreState } from '../../types/product.type';
 import { updateOne, createOne } from '../product-store/product-store.actions';
+import { filter } from 'rxjs/operators';
 import { selectProductById } from '../product-store/product-store.selectors';
 
 @Component({
@@ -27,6 +28,7 @@ export class EditProductComponent implements OnInit {
   ngOnInit(): void {
     this.store
       .select(selectProductById(this.id))
+      .pipe(filter(() => Boolean(this.id)))
       .subscribe(product => this.editProductForm.patchValue(product));
 
     this.dialog
@@ -40,7 +42,7 @@ export class EditProductComponent implements OnInit {
     this.dialog.close();
   }
 
-  get product(): Product {
+  private get product(): Product {
     const { id } = this;
     const product = this.editProductForm.value;
     return { id, ...product };

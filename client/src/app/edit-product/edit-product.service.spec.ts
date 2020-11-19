@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { dialog as dialogMock } from '../../test/mocks/components';
+import { dialog as dialogMock } from '../../test/mocks/services';
 import { EditProductService } from './edit-product.service';
 
 describe('EditProductService', () => {

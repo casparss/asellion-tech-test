@@ -2,6 +2,7 @@ import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
 import { createReducer, on } from '@ngrx/store';
 import { Product, ProductStoreState } from 'src/types/product.type';
 import * as ProductStoreActions from './product-store.actions';
+import last from 'lodash.last';
 
 export const adapter: EntityAdapter<Product> = createEntityAdapter<Product>();
 
@@ -14,9 +15,10 @@ export const reducer = createReducer(
   on(ProductStoreActions.loadAll, (state, { products }) => (
     adapter.setAll(products, state)
   )),
-  on(ProductStoreActions.createOne, (state, { product }) => (
-    adapter.addOne(setLastUpdatedDate(product) as Product, state)
-  )),
+  on(ProductStoreActions.createOne, (state, { product }) => {
+    const mutatedProducted = setLastUpdatedDate(generateId(state, product));
+    return adapter.addOne(mutatedProducted as Product, state);
+  }),
   on(ProductStoreActions.updateOne, (state, { product: { id, ...rest } }) => (
     adapter.updateOne({ id, changes: setLastUpdatedDate(rest) }, state)
   )),
@@ -28,6 +30,11 @@ export const reducer = createReducer(
 const setLastUpdatedDate = (item: Partial<unknown>): Partial<Product> => ({
   ...item,
   lastUpdateDate: new Date()
+});
+
+const generateId = (state: ProductStoreState, item: Partial<unknown>): Partial<Product> => ({
+  ...item,
+  id: (Number(last(state.ids)) + 1).toString()
 });
 
 export const selectors = adapter.getSelectors();

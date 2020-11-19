@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 import { Store as StoreMock } from '../../test/mocks/services';
 import { EditProductModule } from '../edit-product/edit-product.module';
 import { EditProductComponent } from './edit-product.component';
-import { dialog as dialogMock } from '../../test/mocks/components';
+import { dialog as dialogMock } from '../../test/mocks/services';
 
 describe('EditProductComponent', () => {
   let component: EditProductComponent;

@@ -13,7 +13,7 @@
 
   <mat-form-field>
     <mat-label>Current price</mat-label>
-    <textarea matInput placeholder="Current price" formControlName="currentPrice"></textarea>
+    <input matInput type="number" placeholder="Current price" formControlName="currentPrice" />
   </mat-form-field>
 
   <button [disabled]="editProductForm.pristine" type="submit" mat-flat-button color="primary">
