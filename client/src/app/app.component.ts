@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductStoreService } from './product-store/product-store.service';
+import { Store } from '@ngrx/store';
+import { ProductStoreState } from 'src/types/product.type';
+import { loadAll } from './product-store/product-store.actions';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +11,9 @@ import { ProductStoreService } from './product-store/product-store.service';
 export class AppComponent implements OnInit {
   title = 'Dogster';
 
-  constructor(private productStoreService: ProductStoreService) {}
+  constructor(private store: Store<ProductStoreState>) {}
 
   ngOnInit(): void {
-    this.productStoreService.fetchProducts();
+    this.store.dispatch(loadAll());
   }
 }

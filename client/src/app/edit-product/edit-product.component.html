@@ -16,6 +16,8 @@
     <input matInput type="number" placeholder="Current price" formControlName="currentPrice" />
   </mat-form-field>
 
+  <p class="mat-caption">* images are auto-generated for a bit of fun.</p>
+
   <button [disabled]="editProductForm.pristine" type="submit" mat-flat-button color="primary">
     {{ this.id ? 'Update' : 'Create' }}
   </button>

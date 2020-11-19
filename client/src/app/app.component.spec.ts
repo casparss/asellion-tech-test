@@ -1,7 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { ProductListComponent, NewProductButtonComponent } from '../test/mocks/components';
-import { ProductStoreService } from './product-store/product-store.service';
+import { Store } from '@ngrx/store';
+import { Store as StoreMock } from '../test/mocks/services';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -11,9 +12,7 @@ describe('AppComponent', () => {
         NewProductButtonComponent,
         ProductListComponent
       ],
-      providers: [
-        { provide: ProductStoreService, useValue: { fetchProducts(): void {} } }
-      ]
+      providers: [{ provide: Store, useValue: new StoreMock() }]
     }).compileComponents();
   });
 
