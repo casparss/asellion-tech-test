@@ -7,6 +7,9 @@ Hello guys, here's the finished tech test. It was actually quite a lot of fun di
 To run the project, usual start command
 `npm start`
 
+And tests is ususal command
+`npm test`
+
 ### Thoughts
 
 -   I added place holder images to the items which are just fetched by the item ID and are essentially auto-generated. I also added extra fields to the data model which are obviously outside the spec.
@@ -15,6 +18,7 @@ To run the project, usual start command
 -   I would also improve the UX a little, particularly the 'remove product' button I would always have this behaviour behind a 'confirm' dialog.
 -   Didn't go big on the CSS, it's all very simple layout tweaking
 -   Was even thinking about going the extra mile and writing a NestJS simple back-end service but i thought bet of it
+-
 
 # Asellion Front-end assignment (Senior-Level)
 
