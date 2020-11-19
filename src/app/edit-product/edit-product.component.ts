@@ -36,13 +36,13 @@ export class EditProductComponent implements OnInit {
       .subscribe((() => this.editProductForm.reset()));
   }
 
-  save(): void {
+  saveProduct(): void {
     const product = this.product;
     this.store.dispatch(this.id ? updateOne({ product }) : createOne({ product }));
     this.dialog.close();
   }
 
-  public removeProduct(): void {
+  removeProduct(): void {
     const product = this.product;
     this.store.dispatch(removeOne({ product }));
     this.dialog.close();

@@ -1,6 +1,6 @@
 <h2>{{ this.id ? 'Edit' : 'Create' }} product</h2>
 
-<form [formGroup]="editProductForm" (ngSubmit)="save()">
+<form [formGroup]="editProductForm" (ngSubmit)="saveProduct()">
   <mat-form-field>
     <mat-label>Name</mat-label>
     <textarea matInput placeholder="Name" formControlName="name"></textarea>
