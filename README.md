@@ -19,6 +19,7 @@ And tests is ususal command
 -   I would also improve the UX a little, particularly the 'remove product' button I would always have this behaviour behind a 'confirm' dialog.
 -   Didn't go big on the CSS, it's all very simple layout tweaking
 -   Was even thinking about going the extra mile and writing a NestJS simple back-end service but i thought bet of it
+-   Would probably have formatted the HTML a bit better, making the line lengths shoter and formatting attributes veritcally for better readability
 
 # Asellion Front-end assignment (Senior-Level)
 
