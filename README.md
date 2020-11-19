@@ -13,7 +13,7 @@ And tests is ususal command
 ### Thoughts
 
 -   I added place holder images to the items which are just fetched by the item ID and are essentially auto-generated. I also added extra fields to the data model which are obviously outside the spec.
--   The store in a separate mfeature folder and module. I saw examples of store logic being used within the same folder as a component feature, but I don't know how I feel about doing that as the domains don't necessarilly always logically map to the UI displaying that data, so my preference is to separate them. Not sure what the best practice is in Angular but encapsulating these services into there own module made sense to me
+-   The store in a separate feature folder and module. I saw examples of store logic being used within the same folder as a component feature, but I don't know how I feel about doing that as the domains don't necessarilly always logically map to the UI displaying that data, so my preference is to separate them. Not sure what the best practice is in Angular but encapsulating these services into there own module made sense to me
 -   I was going to build components with StoryBook but figured that it would be a little overkill given that there was only a couple of components with hardly any states
 -   If i was to spend longer on the test I'd improve the tests! They all should be in the green, but are only really testing whether the component loads and not really functional. I would also cover the store with tests generally as these are quite cheap tests to write.
 -   I would also improve the UX a little, particularly the 'remove product' button I would always have this behaviour behind a 'confirm' dialog.
